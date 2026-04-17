@@ -1,6 +1,7 @@
 package com.checkout.payment.gateway.model;
 
 import com.checkout.payment.gateway.enums.PaymentStatus;
+import com.checkout.payment.gateway.enums.SupportCurrency;
 import java.util.UUID;
 
 public class PostPaymentResponse {
@@ -9,7 +10,7 @@ public class PostPaymentResponse {
   private int cardNumberLastFour;
   private int expiryMonth;
   private int expiryYear;
-  private String currency;
+  private SupportCurrency currency;
   private int amount;
 
 
@@ -53,11 +54,11 @@ public class PostPaymentResponse {
     this.expiryYear = expiryYear;
   }
 
-  public String getCurrency() {
+  public SupportCurrency getCurrency() {
     return currency;
   }
 
-  public void setCurrency(String currency) {
+  public void setCurrency(SupportCurrency currency) {
     this.currency = currency;
   }
 

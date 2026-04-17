@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.checkout.payment.gateway.enums.PaymentStatus;
+import com.checkout.payment.gateway.enums.SupportCurrency;
 import com.checkout.payment.gateway.model.PostPaymentResponse;
 import com.checkout.payment.gateway.repository.PaymentsRepository;
 import java.util.UUID;
@@ -30,7 +31,7 @@ class PaymentGatewayControllerTest {
     PostPaymentResponse payment = new PostPaymentResponse();
     payment.setId(UUID.randomUUID());
     payment.setAmount(10);
-    payment.setCurrency("USD");
+    payment.setCurrency(SupportCurrency.USD);
     payment.setStatus(PaymentStatus.AUTHORIZED);
     payment.setExpiryMonth(12);
     payment.setExpiryYear(2024);
@@ -44,7 +45,7 @@ class PaymentGatewayControllerTest {
         .andExpect(jsonPath("$.cardNumberLastFour").value(payment.getCardNumberLastFour()))
         .andExpect(jsonPath("$.expiryMonth").value(payment.getExpiryMonth()))
         .andExpect(jsonPath("$.expiryYear").value(payment.getExpiryYear()))
-        .andExpect(jsonPath("$.currency").value(payment.getCurrency()))
+        .andExpect(jsonPath("$.currency").value(payment.getCurrency().getName()))
         .andExpect(jsonPath("$.amount").value(payment.getAmount()));
   }
 
