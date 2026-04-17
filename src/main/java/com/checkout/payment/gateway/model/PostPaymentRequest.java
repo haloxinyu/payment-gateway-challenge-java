@@ -72,10 +72,6 @@ public class PostPaymentRequest implements Serializable {
     this.cvv = cvv;
   }
 
-  public String getExpiryDate() {
-    return String.format("%02d/%d", expiryMonth, expiryYear);
-  }
-
   @Override
   public String toString() {
     return "PostPaymentRequest{" +
